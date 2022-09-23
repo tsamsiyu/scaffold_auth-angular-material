@@ -1,0 +1,38 @@
+<app-login-layout>
+    <mat-card>
+        <mat-card-title>Sign In</mat-card-title>
+        <mat-card-content>
+            <form id="signInForm" (submit)="submit()" novalidate [formGroup]="form">
+
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email" [errorStateMatcher]="errMatcher" placeholder="Ex. pat@example.com">
+                    <mat-error *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')">
+                      Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="form.get('email')?.hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password" [errorStateMatcher]="errMatcher">
+                    <mat-error *ngIf="form.get('password')?.hasError('minlength') && !form.get('password')?.hasError('required')">
+                      Must be at least 6 characters long
+                    </mat-error>
+                    <mat-error *ngIf="form.get('password')?.hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button color="primary" form="signInForm" [disabled]="form.invalid">Submit</button>
+        </mat-card-actions>
+        <mat-card-footer>
+          <a routerLink="/sign-up">I don't have account</a>
+        </mat-card-footer>
+    </mat-card>
+</app-login-layout>

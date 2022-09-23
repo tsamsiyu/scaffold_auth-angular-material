@@ -1,0 +1,86 @@
+<app-login-layout>
+    <mat-card>
+
+      <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+        <section *ngIf="!authConfirmationToken">
+          <mat-card-title>Sign Up</mat-card-title>
+          <mat-card-content>
+              <form id="signUpForm" (submit)="submit()" novalidate [formGroup]="form">
+  
+                  <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Name</mat-label>
+                      <input type="text" matInput formControlName="name" [errorStateMatcher]="errMatcher">
+                      <mat-error *ngIf="form.get('name')?.hasError('minlength') && !form.get('name')?.hasError('required')">
+                          Must be at least 2 characters long
+                        </mat-error>
+                      <mat-error *ngIf="form.get('name')?.hasError('required')">
+                        Name is <strong>required</strong>
+                      </mat-error>
+                  </mat-form-field>
+  
+                  <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Email</mat-label>
+                      <input type="email" matInput formControlName="email" [errorStateMatcher]="errMatcher" placeholder="Ex. pat@example.com">
+                      <mat-error *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')">
+                        Please enter a valid email address
+                      </mat-error>
+                      <mat-error *ngIf="form.get('email')?.hasError('required')">
+                        Email is <strong>required</strong>
+                      </mat-error>
+                  </mat-form-field>
+  
+                  <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Password</mat-label>
+                      <input type="password" matInput formControlName="password" [errorStateMatcher]="errMatcher">
+                      <mat-error *ngIf="form.get('password')?.hasError('minlength') && !form.get('password')?.hasError('required')">
+                        Must be at least 6 characters long
+                      </mat-error>
+                      <mat-error *ngIf="form.get('password')?.hasError('required')">
+                        Email is <strong>required</strong>
+                      </mat-error>
+                  </mat-form-field>
+  
+                  <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Password repeat</mat-label>
+                      <input type="password" matInput formControlName="passwordRepeat" [errorStateMatcher]="errMatcher">
+                      <mat-error *ngIf="form.get('passwordRepeat')?.hasError('unmatched')">
+                        Passwords does not match  
+                      </mat-error>
+                  </mat-form-field>
+  
+              </form>
+          </mat-card-content>
+          <mat-card-actions>
+              <button mat-button color="primary" form="signUpForm" [disabled]="form.invalid">Submit</button>
+          </mat-card-actions>
+          <mat-card-footer>
+              <a routerLink="/sign-in">I have account</a>
+            </mat-card-footer>
+        </section>
+
+        <section *ngIf="authConfirmationToken">
+          <mat-card-title>Sign-up confirmation</mat-card-title>
+          <mat-card-content>
+            <form id="confirmForm" (submit)="submitConfirmation()" novalidate [formGroup]="confirmationForm">
+  
+              <mat-form-field class="full-width" appearance="fill">
+                  <mat-label>Confirmation code</mat-label>
+                  <input type="number" matInput formControlName="code" [errorStateMatcher]="errMatcher">
+                  <mat-error *ngIf="form.get('code')?.hasError('min') && !form.get('code')?.hasError('required')">
+                      Code must be exactly 4 digits
+                    </mat-error>
+                  <mat-error *ngIf="form.get('code')?.hasError('required')">
+                    Code is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+
+            </form>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="primary" form="confirmForm" [disabled]="confirmationForm.invalid">Submit</button>
+          </mat-card-actions>
+        </section>
+
+    </mat-card>
+</app-login-layout>
