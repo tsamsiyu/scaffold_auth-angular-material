@@ -1,6 +1,8 @@
-@use 'app/login/login-layout/login-layout.component' as login;
+@use 'sass:map';
 @use '@angular/material' as mat;
+@use 'app/modules/public-shared/public-layout/public-layout.component.scss' as publicLayout;
 
+$my-basic: mat.define-palette(mat.$grey-palette);
 $my-primary: mat.define-palette(mat.$indigo-palette, 500);
 $my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 $my-warn: mat.define-palette(mat.$red-palette);
@@ -13,10 +15,19 @@ $my-theme: mat.define-light-theme((
  )
 ));
 
-// @include mat.core();
+$appcfg: (
+  "primary-palette": $my-primary,
+  "accent-palette": $my-accent,
+  "warn-palette": $my-warn,
+  "dark-font": mat.get-color-from-palette($my-basic, 700),
+);
+
+// HINT:
+// $color-config: mat.get-color-config($theme);
+// $primary-palette: map.get($color-config, 'primary');
 
 @include mat.core-theme($my-theme);
-@include login.login-layout($my-theme);
+@include publicLayout.component($appcfg);
 
 html, body {height: 100%; }
     

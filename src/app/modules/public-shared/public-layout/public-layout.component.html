@@ -1,0 +1,14 @@
+<mat-toolbar>
+    <span class="app-name">Logo</span>
+    <div class="home-link-container" aria-label="guest-home">
+        <a routerLink="/">Home</a>
+    </div>
+    <span class="spacer"></span>
+    <a mat-icon-button routerLink="/sign-in" aria-label="sign-in">
+        <mat-icon>login</mat-icon>
+    </a>
+</mat-toolbar>
+
+<section>
+    <ng-content></ng-content>
+</section>

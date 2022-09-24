@@ -1,0 +1,14 @@
+<mat-toolbar>
+    <span class="app-name">Logo</span>
+    <div class="home-link-container">
+        <a routerLink="/saved-searches" aria-label="user-home">Home</a>
+    </div>
+    <span class="spacer"></span>
+    <a mat-icon-button (click)="signOut()" aria-label="logout">
+        <mat-icon>logout</mat-icon>
+    </a>
+</mat-toolbar>
+
+<section>
+    <ng-content></ng-content>
+</section>

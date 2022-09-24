@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin component($cfg) {
+    $primary-palette: map.get($cfg, "primary-palette");
+
+    section {
+        padding: 10px;
+    }
+    
+    .spacer {
+        flex: 1 1 auto;
+    }
+    
+    .app-name {
+        color: mat.get-color-from-palette($primary-palette, 500);
+    }
+    
+    .home-link-container {
+        margin-left: 20px;
+        font-size: 16px;
+        color: map.get($cfg, "dark-font");
+
+        a {
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: map.get($cfg, "dark-font");
+        }
+    }
+}
+

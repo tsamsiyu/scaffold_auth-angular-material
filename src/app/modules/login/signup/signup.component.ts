@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
-import { MyErrorStateMatcher } from 'src/app/common/validation';
+import { MyErrorStateMatcher } from 'src/app/ng/validation';
 import { ConfirmSignUp } from 'src/app/openapi/confirmSignUp';
 import { SignUp } from 'src/app/openapi/signUp';
 import { AuthApiService, ConfirmationCodeMismatch, UserAlreadyExists } from '../auth.api.service'

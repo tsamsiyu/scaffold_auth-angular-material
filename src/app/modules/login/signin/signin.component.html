@@ -1,5 +1,8 @@
-<app-login-layout>
+<app-public-layout>
+  
     <mat-card>
+        <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
         <mat-card-title>Sign In</mat-card-title>
         <mat-card-content>
             <form id="signInForm" (submit)="submit()" novalidate [formGroup]="form">
@@ -35,4 +38,5 @@
           <a routerLink="/sign-up">I don't have account</a>
         </mat-card-footer>
     </mat-card>
-</app-login-layout>
+
+</app-public-layout>
